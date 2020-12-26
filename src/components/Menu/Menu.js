@@ -5,6 +5,8 @@ import "./Menu.css";
 
 import coronaImage from "../../images/corona.jpg";
 
+import styles from "./Menu.css";
+
 const Menu = (props) => {
   const [openMenu, setOpenMenu] = useState(false);
   const [optionClicked, setOptionClicked] = useState(false);
@@ -32,35 +34,37 @@ const Menu = (props) => {
   };
 
   return (
-    <div className={optionClicked ? "MenuRight" : "Menu"}>
-      <div className={"m-item m-logo"} onClick={() => setOpenMenu(!openMenu)}>
-        <img
-          style={{ width: "50px", marginTop: "5px" }}
-          alt="COVID-19"
-          src={coronaImage}
-        />
-      </div>
-      <div
-        className={setClassNames(1)}
-        onClick={() => pushToRoute("/IndiaStats")}
-      >
-        India Stats
-      </div>
-      <div
-        className={setClassNames(2)}
-        onClick={() => pushToRoute("/GlobalStats")}
-      >
-        Global Stats
-      </div>
-      <div className={setClassNames(3)} onClick={() => pushToRoute("/")}>
-        Sign out
-      </div>
-      <div className={setClassNames(4)}>
-        <DarkModeToggle
-          onChange={setIsDarkMode}
-          checked={isDarkMode}
-          size={80}
-        />
+    <div className={styles.container}>
+      <div className={optionClicked ? "MenuRight" : "Menu"}>
+        <div className={"m-item m-logo"} onClick={() => setOpenMenu(!openMenu)}>
+          <img
+            style={{ width: "50px", marginTop: "5px" }}
+            alt="COVID-19"
+            src={coronaImage}
+          />
+        </div>
+        <div
+          className={setClassNames(1)}
+          onClick={() => pushToRoute("/IndiaStats")}
+        >
+          India Stats
+        </div>
+        <div
+          className={setClassNames(2)}
+          onClick={() => pushToRoute("/GlobalStats")}
+        >
+          Global Stats
+        </div>
+        <div className={setClassNames(3)} onClick={() => pushToRoute("/")}>
+          Sign out
+        </div>
+        <div className={setClassNames(4)}>
+          <DarkModeToggle
+            onChange={setIsDarkMode}
+            checked={isDarkMode}
+            size={80}
+          />
+        </div>
       </div>
     </div>
   );

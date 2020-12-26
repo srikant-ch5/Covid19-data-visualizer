@@ -1,3 +1,10 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .Menu {
   position: relative;
   margin: 2em 3em;
@@ -11,7 +18,8 @@
   margin: 2em 3em;
   display: flex;
   justify-content: flex-end;
-  width: 85%;
+  flex-direction: row;
+  width: 90%;
 }
 
 .m-item {

@@ -47,7 +47,6 @@ export const fetchCountries = async () => {
     const {
       data: { countries },
     } = await axios.get(`${url}/countries`);
-    console.log(`${url}/countries`);
 
     return countries.map((country) => country.name);
   } catch (error) {
@@ -70,21 +69,33 @@ export const fetchIndiaStates = async () => {
 export const fetchIndiaData = async (state) => {
   try {
     if (state) {
-      console.log("State selected " + state);
       const INDdataInStorage = JSON.parse(localStorage.getItem("IndiaStats"));
 
       const APIStateDates = INDdataInStorage[state]["dates"];
       const keys = Object.keys(APIStateDates);
       const lastUpdate = keys[keys.length - 1];
 
-      console.log(APIStateDates[lastUpdate]["total"]);
       const { confirmed, deceased, recovered, tested } = APIStateDates[
         lastUpdate
       ]["total"];
 
-      console.log(confirmed);
+      const {
+        confirmed: dailyConfirm,
+        deceased: dailyDeceased,
+        recovered: dailyRecovered,
+        tested: dailyTested,
+      } = APIStateDates[lastUpdate]["delta"];
 
-      return { confirmed, recovered, deaths: deceased, lastUpdate };
+      return {
+        confirmed,
+        recovered,
+        deaths: deceased,
+        lastUpdate,
+        dailyConfirm,
+        dailyDeceased,
+        dailyRecovered,
+        dailyTested,
+      };
     } else {
       const {
         data: { confirmed, recovered, deaths, lastUpdate },

@@ -7,10 +7,20 @@ import Paper from "@material-ui/core/Paper";
 
 import Chart from "../Chart/Chart";
 const Cards = ({
-  data: { confirmed, recovered, deaths, lastUpdate },
+  data: {
+    confirmed,
+    recovered,
+    deaths,
+    lastUpdate,
+    dailyConfirm,
+    dailyDeceased,
+    dailyRecovered,
+    dailyTested,
+  },
   country,
   IndState,
 }) => {
+  console.log(dailyConfirm);
   if (!confirmed) {
     return "Loading ...";
   }
@@ -35,7 +45,8 @@ const Cards = ({
             />
           </Typography>
           <Typography color="textSecondary">
-            {new Date(lastUpdate).toDateString()}
+            {new Date(lastUpdate).toDateString()}{" "}
+            {dailyConfirm ? <b>&#8593; {dailyConfirm} </b> : ""}
           </Typography>
           <Typography variant="body2">
             Number of active cases of Covid 19
@@ -61,7 +72,8 @@ const Cards = ({
             />
           </Typography>
           <Typography color="textSecondary">
-            {new Date(lastUpdate).toDateString()}
+            {new Date(lastUpdate).toDateString()}{" "}
+            {dailyRecovered ? <b>&#8593; {dailyRecovered} </b> : ""}
           </Typography>
           <Typography variant="body2">
             Number of recoveries from Covid 19
@@ -87,7 +99,8 @@ const Cards = ({
             />
           </Typography>
           <Typography color="textSecondary">
-            {new Date(lastUpdate).toDateString()}
+            {new Date(lastUpdate).toDateString()}{" "}
+            {dailyDeceased ? <b>&#8593; {dailyDeceased} </b> : ""}
           </Typography>
           <Typography variant="body2">Number of deaths Covid 19</Typography>
         </CardContent>

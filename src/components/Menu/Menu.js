@@ -21,7 +21,7 @@ const Menu = (props) => {
 
   useEffect(() => {
     const currentRoute = window.location.pathname;
-    currentRoute === "/" || currentRoute === "/Covid19-data-visualizer/"
+    currentRoute === "/" || currentRoute === "/Covid19-data-visualizer"
       ? setOptionClicked(false)
       : setOptionClicked(true);
   }, []);

@@ -21,7 +21,7 @@ const Menu = (props) => {
 
   useEffect(() => {
     const currentRoute = window.location.pathname;
-    currentRoute === "/" || currentRoute === "/Covid19-data-visualizer/"
+    currentRoute === "/" || currentRoute === "/Covid19-data-visualizer"
       ? setOptionClicked(false)
       : setOptionClicked(true);
   }, []);
@@ -30,7 +30,9 @@ const Menu = (props) => {
     props.history.push(routeTopush);
     setOpenMenu(false);
 
-    routeTopush === "/" ? setOptionClicked(false) : setOptionClicked(true);
+    routeTopush === "/" || routeTopush === "/Covid19-data-visualizer"
+      ? setOptionClicked(false)
+      : setOptionClicked(true);
   };
 
   return (
@@ -45,18 +47,21 @@ const Menu = (props) => {
         </div>
         <div
           className={setClassNames(1)}
-          onClick={() => pushToRoute("/IndiaStats")}
+          onClick={() => pushToRoute("/Covid19-data-visualizer/IndiaStats")}
         >
           India Stats
         </div>
         <div
           className={setClassNames(2)}
-          onClick={() => pushToRoute("/GlobalStats")}
+          onClick={() => pushToRoute("/Covid19-data-visualizer/GlobalStats")}
         >
-          Global Stats
+          World Stats
         </div>
-        <div className={setClassNames(3)} onClick={() => pushToRoute("/")}>
-          Sign out
+        <div
+          className={setClassNames(3)}
+          onClick={() => pushToRoute("/Covid19-data-visualizer")}
+        >
+          Clear
         </div>
         <div className={setClassNames(4)}>
           <DarkModeToggle

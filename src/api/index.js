@@ -79,12 +79,21 @@ export const fetchIndiaData = async (state) => {
         lastUpdate
       ]["total"];
 
+      console.log(
+        `Total data in ${state} is ${APIStateDates[lastUpdate]["total"]}`
+      );
+
+      console.log(
+        `Delta data in ${state} is ${APIStateDates[lastUpdate]["delta"]}`
+      );
       const {
         confirmed: dailyConfirm,
         deceased: dailyDeceased,
         recovered: dailyRecovered,
         tested: dailyTested,
-      } = APIStateDates[lastUpdate]["delta"];
+      } = APIStateDates[lastUpdate]["delta"]
+        ? APIStateDates[lastUpdate]["delta"]
+        : { confirmed: null, deceased: null, recovered: null, tested: null };
 
       return {
         confirmed,

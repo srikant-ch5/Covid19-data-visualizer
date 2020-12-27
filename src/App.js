@@ -22,8 +22,16 @@ const App = () => {
         <Menu />
 
         <Switch>
-          <Route exact path="/GlobalStats" component={GlobalStats} />
-          <Route exact path="/IndiaStats" component={IndiaStats} />
+          <Route
+            exact
+            path="/Covid19-data-visualizer/GlobalStats"
+            component={GlobalStats}
+          />
+          <Route
+            exact
+            path="/Covid19-data-visualizer/IndiaStats"
+            component={IndiaStats}
+          />
           <Route path="/" component={null} />
         </Switch>
       </div>
